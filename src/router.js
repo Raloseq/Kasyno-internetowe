@@ -5,6 +5,7 @@ import Login from '@/views/Login.vue';
 import Register from '@/views/Register.vue';
 import UserProfile from '@/views/UserProfile.vue';
 import Main from '@/views/Main.vue';
+import OneArmedBandit from '@/views/OneArmedBandit.vue';
 Vue.use(Router);
 
 export default new Router({
@@ -32,6 +33,11 @@ export default new Router({
       path: '/Main',
       name: 'Main',
       component: Main
+    },
+    {
+      path: '/OneArmedBandit',
+      name: 'OneArmedBandit',
+      component: OneArmedBandit
     }
   ],
 });

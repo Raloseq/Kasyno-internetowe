@@ -40,6 +40,7 @@ export default {
   justify-content: center;
   align-items: center;
   transition: 0.7s;
+  z-index: 99;
   .app-nav__item {
     text-decoration: none;
     color: white;
@@ -62,7 +63,6 @@ export default {
       width: 100%;
       height: 5px;
       background-color: black;
-
       transition: top 0.2s 0.2s, bottom 0.2s 0.2s, opacity 0.2s 0.3s,
         transform 0.2s 0.4s;
 
