@@ -1,5 +1,5 @@
 module.exports = {
-    outputDir: 'dist',
+    outputDir: 'templates/dist',
     assetsDir: 'static',
     devServer: {
         proxy: {
