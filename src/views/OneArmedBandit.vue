@@ -8,16 +8,16 @@
     </div>
     <div class="app-bandit__action">
       <input type="number" placeholder="Podaj stawkę" class="app-bandit__rate">
-      <button class="app-bandit__spin">Zakręć</button>
+      <button class="app-bandit__spin" v-on:click="randomColors">Zakręć</button>
     </div>
     <div class="app-bandit__statisctics">
       <div class="divide">
-        <div class="app-bandit__money">Money:</div>
-        <div class="app-bandit__spins">Spins:</div>
+        <div class="app-bandit__money" v-bind:class="money">Money: {{money}}</div>
+        <div class="app-bandit__spins" v-bind:class="spins">Spins: {{spins}}</div>
       </div>
       <div class="divide">
-        <div class="app-bandit__wins">Wins:</div>
-        <div class="app-bandit__lose">Lose:</div>
+        <div class="app-bandit__wins" v-bind:class="wins">Wins: {{wins}}</div>
+        <div class="app-bandit__lose" v-bind:class="lose">Lose: {{lose}}</div>
       </div>
     </div>
   </section>
@@ -25,7 +25,32 @@
 
 <script>
 export default {
-  name: "OneArmedBandit"
+  name: "OneArmedBandit",
+  components: {},
+  data() {
+    return {
+      money: 0,
+      spins: 0,
+      wins: 0,
+      lose: 0,
+      options: ["red", "green", "blue"]
+    };
+  },
+  methods: {
+    randomColors() {
+      const colorContainers = document.querySelectorAll(".app-bandit__color");
+      const colors = [];
+      for (let i = 0; i < this.options.length; i++) {
+        const colorIndex = Math.floor(Math.random() * this.options.length);
+        const color = this.options[colorIndex];
+        colors.push(color);
+        colorContainers.forEach(el => {
+          el.style.backgroundColor = color;
+        });
+      }
+      console.log(colors);
+    }
+  }
 };
 </script>
 
