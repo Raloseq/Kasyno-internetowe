@@ -26,7 +26,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-wrap: wrap;
   .app-main__game {
     position: relative;
     background: url("../assets/bandyta.jpg") no-repeat center;
@@ -54,6 +54,65 @@ export default {
       display: block;
       height: 100%;
       width: 100%;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .app-main__games {
+    .app-main__game {
+      flex-basis: 40%;
+      height: 25vh;
+    }
+  }
+}
+@media (min-width: 320px) and (orientation: landscape) {
+  .app-main__games {
+    .app-main__game {
+      flex-basis: 40%;
+      height: 40vh;
+      .app-main__game-heading {
+        font-size: 20px;
+      }
+    }
+  }
+}
+@media (min-width: 768px) and (orientation: landscape) {
+  .app-main__games {
+    .app-main__game {
+      height: 45vh;
+      .app-main__game-heading {
+        font-size: 25px;
+      }
+    }
+  }
+}
+@media (min-width: 1024px) and (orientation: landscape) {
+  .app-main__games {
+    .app-main__game {
+      height: 30vh;
+      .app-main__game-heading {
+        font-size: 30px;
+      }
+    }
+  }
+}
+@media (min-width: 1440px) {
+  .app-main__games {
+    .app-main__game {
+      .app-main__game-heading {
+        font-size: 30px;
+        padding: 20px;
+      }
+    }
+  }
+}
+@media (min-width: 2560px) {
+  .app-main__games {
+    .app-main__game {
+      .app-main__game-heading {
+        font-size: 70px;
+        padding: 40px;
+      }
     }
   }
 }
