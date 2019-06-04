@@ -43,5 +43,29 @@ export default {
     }
   }
 }
+@media (min-width: 768px) {
+  .app-hero-image {
+    .app-hero-image__heading {
+      font-size: 60px;
+    }
+    .app-hero-image__link {
+      font-size: 30px;
+      border-radius: 13px;
+    }
+  }
+}
+@media (min-width: 2560px) {
+  .app-hero-image {
+    .app-hero-image__heading {
+      font-size: 150px;
+    }
+    .app-hero-image__link {
+      font-size: 80px;
+      padding: 25px;
+      margin: 50px;
+      border-radius: 20px;
+    }
+  }
+}
 </style>
 

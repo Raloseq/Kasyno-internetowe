@@ -4,6 +4,7 @@
     class="app-nav"
     v-bind:class="{openBurger: isActiveNav}"
   >
+    <UserBelt/>
     <router-link to="/" class="app-nav__item">Home</router-link>
     <router-link to="/Login" class="app-nav__item">Login</router-link>
     <router-link to="/Register" class="app-nav__item">Register</router-link>
@@ -17,8 +18,12 @@
 </template>
 
 <script>
+import UserBelt from "@/components/UserBelt.vue";
 export default {
   name: "Nav",
+  components: {
+    UserBelt
+  },
   data() {
     return {
       isActiveNav: false
@@ -103,6 +108,66 @@ export default {
           transform: rotate(-45deg);
         }
       }
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .app-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    .app-nav__item {
+      font-size: 20px;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-bottom: 2px solid white;
+        width: 0;
+        margin: -5px 0;
+        transition: width 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      }
+
+      &:hover::before {
+        width: 100%;
+      }
+    }
+
+    .app-nav__burger {
+      display: none;
+    }
+  }
+}
+@media (min-width: 2560px) {
+  .app-nav {
+    height: 6vh;
+    .app-nav__item {
+      font-size: 60px;
+    }
+  }
+}
+//LANDSCAPE
+@media (min-width: 320px) and (orientation: landscape) {
+  .app-nav {
+    .app-nav__item {
+      font-size: 30px;
+      margin: 10px;
+    }
+  }
+}
+@media (min-width: 768px) and (orientation: landscape) {
+  .app-nav {
+    .app-nav__item {
+      font-size: 20px;
+      margin: 10px;
     }
   }
 }

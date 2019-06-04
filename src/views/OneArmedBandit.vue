@@ -66,5 +66,8 @@ export default {
     }
   }
 }
+//PORTRAIT
+
+//LANDSCAPE
 </style>
 
