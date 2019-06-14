@@ -11,6 +11,7 @@
         <label>Password:</label>
       </div>
       <input type="submit" value="Submit">
+      <router-link to="/Register" class="app-login__link">You dont have an account yet ? Sign up !</router-link>
       {{msg}}
     </form>
   </div>
@@ -117,6 +118,11 @@ export default {
         color: black;
         background-color: white;
       }
+    }
+    .app-login__link {
+      text-align: center;
+      color: white;
+      text-decoration: none;
     }
   }
 }

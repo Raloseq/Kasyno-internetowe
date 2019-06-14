@@ -10,7 +10,12 @@
 
 <script>
 export default {
-  name: "UserBelt"
+  name: "UserBelt",
+  data() {
+    return {
+      online: false
+    };
+  }
 };
 </script>
 
@@ -36,11 +41,11 @@ export default {
     margin: 0 15px;
   }
 }
-@media (min-width: 1024px) and (orientation: portrait) {
+@media (min-width: 1024px) {
   .app-user-belt {
     .app-user-belt__link {
-      height: 8vw;
-      width: 8vw;
+      height: 7vw;
+      width: 7vw;
     }
   }
 }

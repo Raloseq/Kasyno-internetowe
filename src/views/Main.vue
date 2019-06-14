@@ -13,6 +13,11 @@ export default {
   components: {
     UserBelt,
     Games
+  },
+  data() {
+    return {
+      online: true
+    };
   }
 };
 </script>
