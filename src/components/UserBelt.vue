@@ -10,7 +10,12 @@
 
 <script>
 export default {
-  name: "UserBelt"
+  name: "UserBelt",
+  data() {
+    return {
+      online: false
+    };
+  }
 };
 </script>
 
@@ -32,7 +37,52 @@ export default {
     }
   }
   .app-user-belt__name {
+    color: white;
     margin: 0 15px;
+  }
+}
+@media (min-width: 1024px) {
+  .app-user-belt {
+    .app-user-belt__link {
+      height: 7vw;
+      width: 7vw;
+    }
+  }
+}
+@media (min-width: 1024px) and (orientation: landscape) {
+  .app-user-belt {
+    .app-user-belt__link {
+      height: 5vw;
+      width: 5vw;
+    }
+  }
+}
+@media (min-width: 320px) and (orientation: landscape) {
+  .app-user-belt {
+    .app-user-belt__link {
+      height: 8vw;
+      width: 8vw;
+    }
+  }
+}
+@media (min-width: 1440px) {
+  .app-user-belt {
+    .app-user-belt__name {
+      font-size: 30px;
+      margin: 0 30px;
+    }
+    .app-user-belt__link {
+      height: 6vw;
+      width: 6vw;
+    }
+  }
+}
+@media (min-width: 2560px) {
+  .app-user-belt {
+    .app-user-belt__link {
+      height: 5vw;
+      width: 5vw;
+    }
   }
 }
 </style>

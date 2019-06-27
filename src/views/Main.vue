@@ -1,6 +1,5 @@
 <template>
   <main class="app-main">
-    <UserBelt/>
     <h1 class="app-main__heading">Gry</h1>
     <Games/>
   </main>
@@ -14,6 +13,11 @@ export default {
   components: {
     UserBelt,
     Games
+  },
+  data() {
+    return {
+      online: true
+    };
   }
 };
 </script>
@@ -24,6 +28,22 @@ export default {
     font-size: 40px;
     margin: 20px 0;
     text-align: center;
+  }
+}
+@media (min-width: 1024px) {
+  .app-main {
+    .app-main__heading {
+      font-size: 40px;
+      margin: 130px 0 20px;
+    }
+  }
+}
+@media (min-width: 2560px) {
+  .app-main {
+    .app-main__heading {
+      font-size: 100px;
+      margin: 200px 0 50px;
+    }
   }
 }
 </style>
