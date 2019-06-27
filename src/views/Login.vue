@@ -26,7 +26,6 @@ export default {
     return {
       username: "",
       password: "",
-      token: "",
       msg: ""
     };
   },
@@ -40,14 +39,13 @@ export default {
       this.username = "";
       this.password = "";
       axios
-        .post("http://127.0.0.1:8000/api/token-auth/", userdata)
-        .then(res => {
-          this.token = res.data.token;
-          return axios.get("http://127.0.0.1:8000/api/", {
-            headers: { Authorization: `Token ${this.token}` }
-          });
-        })
-        .then(res => (this.msg = res.data.message))
+        .post("http://127.0.0.1:8000/login", userdata)
+        // .then(res => {
+        //   this.token = res.data.token;
+        //   return axios.get("http://127.0.0.1:8000/api/", {
+        //     headers: { Authorization: `Token ${this.token}` }
+        //   });
+        // })
         .catch(err => console.log(err));
     }
   }
