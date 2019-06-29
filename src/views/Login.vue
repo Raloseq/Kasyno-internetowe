@@ -3,14 +3,14 @@
     <form @submit="login" class="app-login__form">
       <h1 class="app-login__heading">Sign in</h1>
       <div class="app-login__form-data">
-        <input type="text" v-model="username" required>
+        <input type="text" v-model="username" required />
         <label>Login:</label>
       </div>
       <div class="app-login__form-data">
-        <input type="password" v-model="password" next="password" required>
+        <input type="password" v-model="password" next="password" required />
         <label>Password:</label>
       </div>
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit" />
       <router-link to="/Register" class="app-login__link">You dont have an account yet ? Sign up !</router-link>
       {{msg}}
     </form>
@@ -40,12 +40,9 @@ export default {
       this.password = "";
       axios
         .post("http://127.0.0.1:8000/login", userdata)
-        // .then(res => {
-        //   this.token = res.data.token;
-        //   return axios.get("http://127.0.0.1:8000/api/", {
-        //     headers: { Authorization: `Token ${this.token}` }
-        //   });
-        // })
+        .then(res => {
+          this.$store.dispatch("setToken", res.data.token);
+        })
         .catch(err => console.log(err));
     }
   }
