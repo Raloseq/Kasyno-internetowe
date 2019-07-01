@@ -1,14 +1,25 @@
 <template>
   <section class="app-bandit">
     <h1 class="app-bandit__heading">Jednoręki bandyta</h1>
-    <div class="app-bandit__colors">
-      <div class="app-bandit__color"></div>
-      <div class="app-bandit__color"></div>
-      <div class="app-bandit__color"></div>
+    <!-- <div v-for="(container,index) in divColor" :key="index" class="app-bandit__colors">
+      <div
+        v-for="(divs,index) in container"
+        :key="index"
+        class="app-bandit__color"
+        v-bind:style="[{backgroundColor: divs},{color: divs}]"
+      >{{divs}}</div>
+    </div>-->
+    <div class="app-bandit__colors" v-if="x == 1">
+      <div
+        v-for="(color, index) in divColor"
+        :key="index"
+        class="app-bandit__color"
+        v-bind:style="[{ backgroundColor: color }, { color }]"
+      >{{ color }}</div>
     </div>
     <div class="app-bandit__action">
-      <input type="number" placeholder="Podaj stawkę" class="app-bandit__rate">
-      <button class="app-bandit__spin" v-on:click="randomColors">Zakręć</button>
+      <input type="number" placeholder="Podaj stawkę" class="app-bandit__rate" ref="gamerate">
+      <button class="app-bandit__spin" v-on:click="startGame()">Zakręć</button>
     </div>
     <div class="app-bandit__statisctics">
       <div class="divide">
@@ -24,31 +35,67 @@
 </template>
 
 <script>
+import { setTimeout } from "timers";
 export default {
   name: "OneArmedBandit",
   components: {},
   data() {
     return {
-      money: 0,
+      money: 22,
       spins: 0,
       wins: 0,
       lose: 0,
-      options: ["red", "green", "blue"]
+      options: ["red", "green", "blue"],
+      divColor: [],
+      x: 0
     };
   },
   methods: {
+    startGame() {
+      if (this.x == 1) {
+        this.divColor = [];
+        this.x = 0;
+      }
+      this.x++;
+      this.startSpin();
+      this.winStreaks();
+      console.log(this.divColor);
+    },
     randomColors() {
-      const colorContainers = document.querySelectorAll(".app-bandit__color");
-      const colors = [];
       for (let i = 0; i < this.options.length; i++) {
         const colorIndex = Math.floor(Math.random() * this.options.length);
         const color = this.options[colorIndex];
-        colors.push(color);
-        colorContainers.forEach(el => {
-          el.style.backgroundColor = color;
-        });
+        this.divColor.push(color);
       }
-      console.log(colors);
+    },
+    startSpin() {
+      let spinValue = this.$refs.gamerate.value;
+      if (spinValue > this.money) {
+        alert("Nie masz tyle kasy");
+      } else if (spinValue == 0) {
+        alert("Za 0 nie zagrasz");
+      } else {
+        this.money -= spinValue;
+        this.randomColors();
+      }
+    },
+    winStreaks() {
+      const winCombos = [
+        ["green", "green", "green"],
+        ["red", "red", "red"],
+        ["blue", "blue", "blue"]
+      ];
+      // if (JSON.stringify(this.divColor) === JSON.stringify(winCombos[0])) {
+      //   console.log("jackpot");
+      // }
+      for (let i = 0; i < this.divColor.length; i++) {
+        if (this.divColor == winCombos[i]) {
+          console.log("jackpott");
+        }
+      }
+      if (this.divColor == winCombos[0]) {
+        console.log("jackpott");
+      }
     }
   }
 };
@@ -67,9 +114,9 @@ export default {
   }
   .app-bandit__colors {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     width: 90%;
-    margin: 20px 0;
+    margin: 0;
     .app-bandit__color {
       border: 1px solid black;
       width: 30%;
